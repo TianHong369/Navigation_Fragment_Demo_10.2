@@ -29,5 +29,9 @@
         android:id="@+id/thankyouFragment"
         android:name="com.mad.navigation_fragment_demo_102.ThankyouFragment"
         android:label="fragment_thankyou"
-        tools:layout="@layout/fragment_thankyou" />
+        tools:layout="@layout/fragment_thankyou" >
+        <argument
+            android:name="score"
+            app:argType="float" />
+    </fragment>
 </navigation>

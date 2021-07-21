@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import com.mad.navigation_fragment_demo_102.databinding.FragmentQuestionBinding
 
@@ -72,10 +73,8 @@ class QuestionFragment : Fragment() {
                 }
                 if (answers[answerIndex] == currentQuestion.question_choice[0]) {
                     score += 1
+
                 }
-
-
-
                 if (questionIndex < 1) {
 
                     questionIndex += 1
@@ -83,9 +82,11 @@ class QuestionFragment : Fragment() {
                     setQuestion()
 
                 } else {
+                    val percenatage : Float=(score/2.0f)*100
                     // todo:: navigate to thankyou fragment
-                    Navigation.findNavController(it).navigate(R.id.action_questionFragment_to_thankyouFragment)
-
+                    val action : NavDirections = QuestionFragmentDirections.actionQuestionFragmentToThankyouFragment(percenatage)
+                    //Navigation.findNavController(it).navigate(R.id.action_questionFragment_to_thankyouFragment)
+                    Navigation.findNavController(it).navigate(action)
                 }
             } else {
                 Toast.makeText(context, "please select answer", Toast.LENGTH_LONG).show()
